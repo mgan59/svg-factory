@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="bunny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="640px" height="480px" viewBox="0 0 640 480" enable-background="new 0 0 640 480" xml:space="preserve">
+<path id="rightArm" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M239.578,281.558c0,0-17.007-8.163-35.374,12.245
+	s-54.422-3.401-54.422,4.762s-4.081,44.898,19.048,32.653s76.446-40.061,70.748-45.578"/>
+<g id="feet">
+	<path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M258.24,383.384c19.952-24.846,121.322,13.058,115.199,22.582
+		S240.32,405.699,258.24,383.384z"/>
+	<path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M256.974,383.384c-19.952-24.846-121.321,13.058-115.199,22.582
+		S274.894,405.699,256.974,383.384z"/>
+</g>
+<path id="head" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M252.592,205.367c0,0-56.462-3.523-32.653,34.633
+	s63.265,36.115,76.871,8.904C310.415,221.694,287.054,196.98,252.592,205.367z"/>
+
+
+</svg>
+

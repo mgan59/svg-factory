@@ -1,8 +1,9 @@
 var _ = require('lodash');
 var colors = require('colors');
-// our xml parsing lib
-var parseString = require('xml2js').parseString;
-var traverseNodes = require('./lib/traverse');
+// Our xml processing, abandoned xml2js because of order
+// https://github.com/Leonidas-from-XIV/node-xml2js/issues/31 
+var xamel = require('xamel');
+var traverseNodes = require('./lib/traverseRefactor');
 
 module.exports = function(){
     var parser = {};
@@ -24,17 +25,21 @@ module.exports = function(){
 
         // magic happens here
         // parse our xml/svgFragment
-        parseString(svgFragment, function (err, result) {
+        xamel.parse(svgFragment, function (err, xmlObj) {
             // propogate err from svgParsing to client
             if(err){
                 callback(err, null);
-                exit
-
+                process.exit();
             }
             
             // Get root xml node's attributes (root #id)
-            var docInfo = result.svg.$;
+            //var docInfo = result.svg.$;
+            //console.log(xmlObj);
 
+            // check that our xmlObj has children, if not major problem
+            if(xmlObj.children.length === 0){
+                // throw error
+            }
 
             // determine eventually how we plan to template these src(s)
             // These pieces are the template-header
@@ -43,8 +48,9 @@ module.exports = function(){
             // do 4 space indent
             srcJS += '    var '+rootObjLabel+' = s.group();\n';
             
-            srcTraverseJS = traverseNodes(result.svg, srcTraverseJS, rootObjLabel);
-            
+            //srcTraverseJS = traverseNodes(result.svg, srcTraverseJS, rootObjLabel);
+            // xmlObj.children is our rootNode to start on
+            srcTraverseJS = traverseNodes(xmlObj.children, srcTraverseJS, rootObjLabel); 
             srcJS += srcTraverseJS;
             srcJS += 'return '+rootObjLabel+';';
             srcJS += '\n}; // private-functional-closure\n}; // close factory';

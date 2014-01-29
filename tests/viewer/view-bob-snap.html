@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <style>#testCanvas{border:1px dotted #ccc;}</style>
+        <script type="text/javascript" src="js/vendors/snap.svg-min.js"></script>
+        <script type="text/javascript" src="js/svg-factories/bob.js"></script>     
+<script>
+window.onload = function(){
+    
+    var s = Snap("#testCanvas");
+    // reason for this double wrape can get a constructor
+    var bunnyFactory = window.bigBunny(s);
+    // like this that we can then pass configurations into and the general paths are cached
+    
+    var bunnyAsset = bunnyFactory();
+    console.log(bunnyAsset);
+    //
+    // how to use matrix/translate and transform
+    // http://www.i-programmer.info/programming/javascript/6537-getting-started-with-snapsvg.html?start=1 
+    //
+    //var testMatrix = new Snap.Matrix();
+    //testMatrix.translate(100,100);
+    //bunnyAsset.transform(testMatrix);
+
+};
+</script>
+</head>
+<body>
+    <svg id="testCanvas"></svg>
+</body>
+</html>
+
