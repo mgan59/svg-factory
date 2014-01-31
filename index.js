@@ -34,7 +34,7 @@ module.exports = function(){
             
             // Get root xml node's attributes (root #id)
             //var docInfo = result.svg.$;
-            console.log(xmlObj);
+            //console.log(xmlObj);
 
             // check that our xmlObj has children, if not major problem
             if(xmlObj.children.length === 0){
