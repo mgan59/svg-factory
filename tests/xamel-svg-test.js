@@ -3,7 +3,7 @@ var xamel = require('xamel');
 var SvgFactory = require('../index')();
 var colors = require('colors');
 
-var svgSrc = fs.readFileSync('../svg-examples/bunny.svg', {encoding:'utf-8'});
+var svgSrc = fs.readFileSync('../svg-examples/bob-the-blob.svg', {encoding:'utf-8'});
 /*
 xamel.parse(svgSrc, function(err, xml) {
     
