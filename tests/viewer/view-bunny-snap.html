@@ -2,13 +2,13 @@
     <head>
         <style>#testCanvas{border:1px dotted #ccc;}</style>
         <script type="text/javascript" src="js/vendors/snap.svg-min.js"></script>
-        <script type="text/javascript" src="js/svg-factories/bigBunny.js"></script>     
+        <script type="text/javascript" src="js/svg-factories/bunny.js"></script>     
 <script>
 window.onload = function(){
     
     var s = Snap("#testCanvas");
     // reason for this double wrape can get a constructor
-    var bunnyFactory = window.bigBunny(s);
+    var bunnyFactory = window.bunny(s);
     // like this that we can then pass configurations into and the general paths are cached
     
     var bunnyAsset = bunnyFactory();

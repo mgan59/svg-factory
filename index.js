@@ -9,7 +9,6 @@ module.exports = function(){
     var that = {};
     
     that.parse = function(svgFragment, options, callback){
-        console.log('blah');
         // params
         // * need a constructor/factory function name
         // * need rootObjectLabel
