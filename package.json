@@ -1,14 +1,18 @@
 {
   "name": "svg-factory",
   "version": "0.0.1",
-  "description": "Provides an interface to take an XML SVG Doc/Fragment[`string`] and parse it then using a specified template generate javascript.  Built as a workflow tool to convert a series of Illustrator created SVG files into runnable js code in RaphaelJS and Snap.svg  ",
+  "description": "A library for generating js-object code from a src svg document using meta programming.",
   "main": "index.js",
   "dependencies": {
     "lodash": "~2.4.1",
-    "xml2js": "~0.4.1",
-    "express": "~3.4.7",
     "colors": "~0.6.2",
     "xamel": "~0.2.0-pre1"
+  },
+  "devDependencies":{
+    "jshint":"~2.4.3",
+    "grunt":"0.4.2",
+    "grunt-contrib-jshint":"0.8.0"
+
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

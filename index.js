@@ -6,9 +6,10 @@ var xamel = require('xamel');
 var traverseNodes = require('./lib/traverseRefactor');
 
 module.exports = function(){
-    var parser = {};
+    var that = {};
     
-    parser.parse = function(svgFragment, options, callback){
+    that.parse = function(svgFragment, options, callback){
+        console.log('blah');
         // params
         // * need a constructor/factory function name
         // * need rootObjectLabel
@@ -61,6 +62,6 @@ module.exports = function(){
         });
         // return out parsed SvgDocObject
     };
-
-    return parser;
+    
+    return that;
 };
