@@ -1,7 +1,7 @@
 # svg-factory
 ===========
 
-A library for generating js-object code from a src svg document using meta programming.
+A [meta-programming](http://en.wikipedia.org/wiki/Meta_programming) library for generating js-object code from a src svg document.
 
 ```javascript
 

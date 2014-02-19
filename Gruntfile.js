@@ -10,14 +10,25 @@ module.exports = function(grunt) {
     },
     // Configuration to be run (and then tested).
     svg_factory_writer: {
-      testExamples: {
+      globalWindowExamples: {
         options: {
-
+            template:'globalWindow'
         },
         files: [
           {
             expand:true, cwd:'svg-examples/', src:'*.svg', 
-            dest:'tests/viewer/js/svg-factories/'
+            dest:'tests/viewer/js/svg-factories/globalWindow/'
+          }
+        ]
+      },
+      commonJSExamples: {
+        options: {
+            template:'commonJS'
+        },
+        files: [
+          {
+            expand:true, cwd:'svg-examples/', src:'*.svg', 
+            dest:'tests/viewer/js/svg-factories/commonJS/'
           }
         ]
       }
