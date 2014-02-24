@@ -4,7 +4,7 @@
 <svg version="1.1" id="bobTheBlob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="640px" height="480px" viewBox="0 0 640 480" enable-background="new 0 0 640 480" xml:space="preserve">
 
-<path fill="#3D77F9" stroke="#000000" stroke-miterlimit="10" d="M167.558,240c-29.792-49.22,28.572-127.83,80.272-117.626
+<path id="body" fill="#3D77F9" stroke="#000000" stroke-miterlimit="10" d="M167.558,240c-29.792-49.22,28.572-127.83,80.272-117.626
 	S347.15,203.885,309.735,240C272.32,276.115,187.285,272.592,167.558,240z"/>
 
 <ellipse id="mouth" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="236.123" cy="229.75" rx="51.123" ry="13.75"/>

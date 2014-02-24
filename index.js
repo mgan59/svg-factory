@@ -53,23 +53,8 @@ module.exports = function(){
             
             srcTraverseJS = traverseNodes(xmlObj.children, srcTraverseJS, rootObjLabel); 
             srcJS = _.template(templateFrame, {factoryObjLabel:factoryObjLabel, rootObjLabel:rootObjLabel, jsSrc:srcTraverseJS});
-            /*
-            // determine eventually how we plan to template these src(s)
-            // These pieces are the template-header
-            srcJS += 'var '+factoryObjLabel+' = function(s){\n';
-            srcJS += 'return function(){\n';
-            // do 4 space indent
-            srcJS += '    var '+rootObjLabel+' = s.group();\n';
-            
-            //srcTraverseJS = traverseNodes(result.svg, srcTraverseJS, rootObjLabel);
-            // xmlObj.children is our rootNode to start on
-            srcTraverseJS = traverseNodes(xmlObj.children, srcTraverseJS, rootObjLabel); 
-            srcJS += srcTraverseJS;
-            srcJS += 'return '+rootObjLabel+';';
-            srcJS += '\n}; // private-functional-closure\n}; // close factory';
-            srcJS += '\nwindow.'+factoryObjLabel+' = '+factoryObjLabel+';';
-            */
-            return callback(err, srcJS);
+
+           return callback(err, srcJS);
         });
         // return out parsed SvgDocObject
     };

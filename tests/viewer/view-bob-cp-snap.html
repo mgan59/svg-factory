@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <style>#testCanvas{border:1px dotted #ccc;}</style>
+        <script type="text/javascript" src="js/vendors/snap.svg-min.js"></script>
+        <script type="text/javascript" src="js/svg-factories/globalWindow/bob-the-blob-cp.js"></script>     
+<script>
+window.onload = function(){
+    
+    var s = Snap("#testCanvas");
+    // reason for this double wrape can get a constructor
+    var bobFactory = window.bob_the_blob(s);
+    // like this that we can then pass configurations into and the general paths are cached
+    
+    var bobAsset = bobFactory({
+        colorPalette:{
+            primary:{fill:'#ff5500', stroke:'#000000'}
+        },
+        colorMapping:{
+            body:'primary'
+        }
+    });
+    console.log(bobAsset);
+    //
+    // how to use matrix/translate and transform
+    // http://www.i-programmer.info/programming/javascript/6537-getting-started-with-snapsvg.html?start=1 
+    //
+    //var testMatrix = new Snap.Matrix();
+    //testMatrix.translate(100,100);
+    //bunnyAsset.transform(testMatrix);
+
+};
+</script>
+</head>
+<body>
+    <svg id="testCanvas"></svg>
+</body>
+</html>
+

@@ -1,18 +1,26 @@
+/*
+ * Generated version then modified to add in a prototype color system so we can identify how it beeds to actually work
+ */
 var bob_the_blob = function(s){
-    return function(){
+    return function(params){
         var _obj = s.group();
-        
+        // ^^^^^^^^^^^^
+        // TODO: put params into play here
+
         // colors to namingConvention
-        var palette = {
-            primary:{fill:'#ff0000', stroke:'#000000'}
-        };
+        var palette = params.colorPalette;
 
         // namingConventions to #domID
-        var colorMapping = {
-            body:palette.primary
+        var colorMapping = params.colorMapping;
+        
+        // accepts an id target looks up the palette match
+        // then returns the actual palette
+        var color = function(target){
+            var paletteMatch = colorMapping[target];
+            return palette[paletteMatch];
         };
 
-        var body =s.path("M167.558,240c-29.792-49.22,28.572-127.83,80.272-117.626S347.15,203.885,309.735,240C272.32,276.115,187.285,272.592,167.558,240z").attr({fill:colorMapping['body'].fill, stroke:colorMapping['body'].stroke});
+        var body =s.path("M167.558,240c-29.792-49.22,28.572-127.83,80.272-117.626S347.15,203.885,309.735,240C272.32,276.115,187.285,272.592,167.558,240z").attr({fill:color('body').fill, stroke:color('body').stroke});
         _obj.add(body);
 var mouth2=s.ellipse(236.123,229.75,51.123,13.75).attr({fill:"#FFFFFF", stroke:"#000000"});
 
