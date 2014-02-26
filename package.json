@@ -11,7 +11,7 @@
   "devDependencies": {
     "jshint": "~2.4.3",
     "grunt": "0.4.2",
-    "grunt-contrib-jshint": "0.8.0",
+    "grunt-contrib-jshint": "0.1.1",
     "grunt-svg-factory-writer": "~0.1.0",
     "phantom": "~0.5.4"
   },

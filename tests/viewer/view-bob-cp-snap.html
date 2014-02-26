@@ -2,7 +2,7 @@
     <head>
         <style>#testCanvas{border:1px dotted #ccc;}</style>
         <script type="text/javascript" src="js/vendors/snap.svg-min.js"></script>
-        <script type="text/javascript" src="js/svg-factories/globalWindow/bob-the-blob-cp.js"></script>     
+        <script type="text/javascript" src="js/svg-factories/globalWindow/bob-the-blob.js"></script>     
 <script>
 window.onload = function(){
     
@@ -13,10 +13,12 @@ window.onload = function(){
     
     var bobAsset = bobFactory({
         colorPalette:{
-            primary:{fill:'#ff5500', stroke:'#000000'}
+            primary:{fill:'#ff5500', stroke:'#000000'},
+            ears:{fill:'#efefef', stroke:'#333'}
         },
         colorMapping:{
-            body:'primary'
+            body:'primary',
+            ear:'ears'
         }
     });
     console.log(bobAsset);

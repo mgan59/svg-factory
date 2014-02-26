@@ -5,7 +5,8 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     jshint:{
       files:['Gruntfile.js','index.js', 'package.json',
-        'tests/*.js', 'tests/viewer/js/svg-factories'
+        'tests/*.js' 
+        //'tests/viewer/js/svg-factories/globalWindow/*.js'
       ]
     },
     // Configuration to be run (and then tested).
@@ -33,7 +34,7 @@ module.exports = function(grunt) {
         ]
       }
       
-    },
+    }
 
   });
 
@@ -42,6 +43,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-svg-factory-writer');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint', 'svg_factory_writer']);
+  grunt.registerTask('default', ['svg_factory_writer', 'jshint']);
+
+  grunt.registerTask('jshint', ['jshint']);
 
 };

@@ -4,6 +4,12 @@ var colors = require('colors');
 // Our xml processing, abandoned xml2js because of order
 // https://github.com/Leonidas-from-XIV/node-xml2js/issues/31 
 var xamel = require('xamel');
+
+// TODO write to be svg-generator
+// which has a private method traverse :)
+// our generator should have an interface to accept 
+// options from top level, default fill/stroke colors 
+// for doing a flat color system.
 var traverseNodes = require('./lib/traverse');
 
 

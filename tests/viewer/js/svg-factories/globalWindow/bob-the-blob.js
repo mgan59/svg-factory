@@ -1,19 +1,47 @@
 var bob_the_blob = function(s){
-    return function(){
+    return function(params){
+        // mask our params to handle possible undefined
+        var _params = ((params)? params:{});
+        
+        // our private factory we will return
         var _obj = s.group();
         
+        /**
+         * color param matching, see if we can logic block
+         */
         // colors to namingConvention
-        var palette = {
-            primary:{fill:'#ff0000', stroke:'#000000'}
-        };
+        var _palette = _params.colorPalette;
 
         // namingConventions to #domID
-        var colorMapping = {
-            body:palette.primary
+        var _colorMapping = _params.colorMapping;
+        
+        // accepts an id target looks up the palette match
+        // then returns the actual palette
+        var color = function(target){
+            var paletteMatch=null,
+                // by default return white/black for unmatched
+                // lookup calls, instead of not handling and
+                // having an exception throw
+                // improve to log message if palette error
+                // or mapping error, to help developer
+                palette={fill:'#fff', stroke:'#000'};
+            if(_colorMapping[target]){
+                paletteMatch = _colorMapping[target];
+                if(_palette[paletteMatch]){
+                    palette = _palette[paletteMatch];
+                } else {
+                    console.warn('_palette missing', paletteMatch);
+                }
+            } else {
+                console.warn('_colorMap missing ',target);
+            }
+             
+            return palette;
         };
+        /* end color matching block */
 
-        var body =s.path("M167.558,240c-29.792-49.22,28.572-127.83,80.272-117.626S347.15,203.885,309.735,240C272.32,276.115,187.285,272.592,167.558,240z").attr({fill:colorMapping['body'].fill, stroke:colorMapping['body'].stroke});
-        _obj.add(body);
+
+        _obj.add(s.path("M167.558,240c-29.792-49.22,28.572-127.83,80.272-117.626S347.15,203.885,309.735,240C272.32,276.115,187.285,272.592,167.558,240z").attr({fill:color('body').fill, stroke:color('body').stroke}));
 var mouth2=s.ellipse(236.123,229.75,51.123,13.75).attr({fill:"#FFFFFF", stroke:"#000000"});
 
 _obj.add(mouth2);

@@ -3,21 +3,39 @@
  */
 var bob_the_blob = function(s){
     return function(params){
+        // mask our params to handle possible undefined
+        var _params = ((params)? params:{});
+        // primary obj
         var _obj = s.group();
-        // ^^^^^^^^^^^^
-        // TODO: put params into play here
-
+        
         // colors to namingConvention
-        var palette = params.colorPalette;
+        var _palette = _params.colorPalette;
 
         // namingConventions to #domID
-        var colorMapping = params.colorMapping;
+        var _colorMapping = _params.colorMapping;
         
         // accepts an id target looks up the palette match
         // then returns the actual palette
         var color = function(target){
-            var paletteMatch = colorMapping[target];
-            return palette[paletteMatch];
+            var paletteMatch=null,
+                // by default return white/black for unmatched
+                // lookup calls, instead of not handling and
+                // having an exception throw
+                // improve to log message if palette error
+                // or mapping error, to help developer
+                palette={fill:'#fff', stroke:'#000'};
+            if(_colorMapping[target]){
+                paletteMatch = _colorMapping[target];
+                if(_palette[paletteMatch]){
+                    palette = _palette[paletteMatch];
+                } else {
+                    console.warn('_palette missing', paletteMatch);
+                }
+            } else {
+                console.warn('_colorMap missing ',target);
+            }
+             
+            return palette;
         };
 
         var body =s.path("M167.558,240c-29.792-49.22,28.572-127.83,80.272-117.626S347.15,203.885,309.735,240C272.32,276.115,187.285,272.592,167.558,240z").attr({fill:color('body').fill, stroke:color('body').stroke});
@@ -40,8 +58,8 @@ var leftIris7=s.ellipse(209,166.5,4,5).attr({fill:"#000000", stroke:"#000000"});
 _obj.add(leftIris7);
 _obj.add(eyes3);
 var ears8 = s.group();
-ears8.add(s.path("M183.948,150.24c0,0-11.383-60.228-3.111-51.769c3.318,3.393,33.76,27.125,29.409,30.544C197.023,139.409,197.402,135.579,183.948,150.24z").attr({fill:"#C19C00", stroke:"#000000"}));
-ears8.add(s.path("M297.546,152.24c0,0,11.383-60.228,3.111-51.769c-3.318,3.393-33.76,27.125-29.409,30.544C284.471,141.409,284.092,137.579,297.546,152.24z").attr({fill:"#C19C00", stroke:"#000000"}));
+ears8.add(s.path("M183.948,150.24c0,0-11.383-60.228-3.111-51.769c3.318,3.393,33.76,27.125,29.409,30.544C197.023,139.409,197.402,135.579,183.948,150.24z").attr({fill:color('ear').fill, stroke:color('ear').stroke}));
+ears8.add(s.path("M297.546,152.24c0,0,11.383-60.228,3.111-51.769c-3.318,3.393-33.76,27.125-29.409,30.544C284.471,141.409,284.092,137.579,297.546,152.24z").attr({fill:color('ear').fill, stroke:"#000000"}));
 _obj.add(ears8);
 
 
