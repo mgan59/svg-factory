@@ -1,11 +1,33 @@
-var bob_the_blob = function(s){
+// s is the drawing context
+// Snap is our actual svg lib
+var bob_the_blob = function(s, Snap){
+    console.log('poop? ', Snap);
     return function(params){
+        console.log('snap here? ',Snap);
         // mask our params to handle possible undefined
         var _params = ((params)? params:{});
         
         // our private factory we will return
         var _obj = s.group();
-        
+
+        _obj.actions = {};
+        _obj.actions.test = function(){
+           //var rotate1 = {transform:"t-0,60r45"};
+           var rotate1 = {transform:"r45"};
+            var rotate2 = {transform:"t-0,60r-45"};
+           _obj.animate(rotate1,1000, mina.easeinout, function(){
+               
+             //_obj.animate(rotate2,1000, mina.easeinout);  
+            }); 
+        };
+        _obj.actions.position = function(x,y){
+            console.log('-- ',s);
+            console.log('pf --', Snap);
+            var positionMatrix = new Snap.Matrix();
+            positionMatrix.translate(x,y);
+            _obj.transform(positionMatrix);
+        };
+
         /**
          * color param matching, see if we can logic block
          */
@@ -25,7 +47,7 @@ var bob_the_blob = function(s){
                 // improve to log message if palette error
                 // or mapping error, to help developer
                 palette={fill:'#fff', stroke:'#000'};
-            if(_colorMapping[target]){
+            if(_colorMapping && _colorMapping[target]){
                 paletteMatch = _colorMapping[target];
                 if(_palette[paletteMatch]){
                     palette = _palette[paletteMatch];

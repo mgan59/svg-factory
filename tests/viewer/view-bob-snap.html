@@ -7,12 +7,44 @@
 window.onload = function(){
     
     var s = Snap("#testCanvas");
+    console.log('------------');
+    console.log(Snap);
+    console.log(s);
+    console.log('============');
     // reason for this double wrape can get a constructor
-    var bobFactory = window.bob_the_blob(s);
+    var bobFactory = window.bob_the_blob(s, Snap);
     // like this that we can then pass configurations into and the general paths are cached
     
-    var bobAsset = bobFactory();
+    // simple white port
+    //var bobAsset = bobFactory();
+    
+    var bobAsset = bobFactory({
+        colorPalette:{
+            primary:{fill:'#ff5500', stroke:'#000000'},
+            ears:{fill:'#efefef', stroke:'#333'}
+        },
+        colorMapping:{
+            body:'primary',
+            ear:'ears'
+        }
+    });
     console.log(bobAsset);
+    bobAsset.actions.position(250,20);
+    bobAsset.actions.test();
+
+
+    var bobbyAsset = bobFactory({
+        colorPalette:{
+            primary:{fill:'#ff0000', stroke:'#000000'},
+            ears:{fill:'#efefef', stroke:'#333'}
+        },
+        colorMapping:{
+            body:'primary',
+            ear:'ears'
+        }
+    });
+    
+
     //
     // how to use matrix/translate and transform
     // http://www.i-programmer.info/programming/javascript/6537-getting-started-with-snapsvg.html?start=1 
