@@ -3,6 +3,9 @@
 var bob_the_blob = function(s, Snap){
     console.log('poop? ', Snap);
     return function(params){
+        //var curPos = {x:null, y:null};
+        var _positionMatrix = null;
+
         console.log('snap here? ',Snap);
         // mask our params to handle possible undefined
         var _params = ((params)? params:{});
@@ -11,14 +14,27 @@ var bob_the_blob = function(s, Snap){
         var _obj = s.group();
 
         _obj.actions = {};
-        _obj.actions.test = function(){
+        _obj.actions.animateRotate = function(){
            //var rotate1 = {transform:"t-0,60r45"};
-           var rotate1 = {transform:"r45"};
+           var rotate1 = {transform:"R45"};
             var rotate2 = {transform:"t-0,60r-45"};
            _obj.animate(rotate1,1000, mina.easeinout, function(){
                
              //_obj.animate(rotate2,1000, mina.easeinout);  
             }); 
+        };
+
+        _obj.actions.rotate = function(angle){
+            angle = 45;
+            var rotateMatrix = new Snap.Matrix();
+            rotateMatrix.add(_positionMatrix);
+            var cpos = {
+                x:_positionMatrix.x(0,0),
+                y:_positionMatrix.y(0,0)
+            };
+            console.log('CUR POS', cpos);
+            rotateMatrix.rotate(angle, cpos.x,cpos.y);
+            _obj.transform(rotateMatrix);
         };
         _obj.actions.position = function(x,y){
             console.log('-- ',s);
@@ -26,6 +42,9 @@ var bob_the_blob = function(s, Snap){
             var positionMatrix = new Snap.Matrix();
             positionMatrix.translate(x,y);
             _obj.transform(positionMatrix);
+            _positionMatrix = positionMatrix;
+            //console.log(_obj);
+            //console.log('pos x0,0 -',positionMatrix.x(10,0));
         };
 
         /**
