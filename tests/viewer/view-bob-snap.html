@@ -5,20 +5,32 @@
         <script type="text/javascript" src="js/svg-factories/globalWindow/bob-the-blob.js"></script>     
 <script>
 window.onload = function(){
-    
+    var absBox = document.getElementById('abs');
+    var offsetBox = document.getElementById('offset');
+
     var s = Snap("#testCanvas");
+    s.mousemove(function(e){
+        console.log('event bind',e);
+        absBox.innerHTML = e.x+','+e.y;
+        offsetBox.innerHTML = e.offsetX+','+e.offsetY;
+    });
+
+/*
     console.log('------------');
     console.log(Snap);
     console.log(s);
     console.log('============');
+    */
+    s.ellipse(146,126,2,2);
     // reason for this double wrape can get a constructor
     var bobFactory = window.bob_the_blob(s, Snap);
     // like this that we can then pass configurations into and the general paths are cached
     
     // simple white port
-    //var bobAsset = bobFactory();
+    var sadAsset = bobFactory();
     
     var bobAsset = bobFactory({
+        /*
         colorPalette:{
             primary:{fill:'#ff5500', stroke:'#000000'},
             ears:{fill:'#efefef', stroke:'#333'}
@@ -26,13 +38,11 @@ window.onload = function(){
         colorMapping:{
             body:'primary',
             ear:'ears'
-        }
+        }*/
     });
-    console.log(bobAsset);
+    console.log('bbox ->',bobAsset.getBBox());
     bobAsset.actions.position(250,20);
-    setTimeout(bobAsset.actions.rotate, 2000);
-
-/*
+    
     var bobbyAsset = bobFactory({
         colorPalette:{
             primary:{fill:'#ff0000', stroke:'#000000'},
@@ -43,7 +53,9 @@ window.onload = function(){
             ear:'ears'
         }
     });
-  */  
+    bobbyAsset.actions.position(250,20);
+    setTimeout(bobbyAsset.actions.rotate, 2000);
+
 
     //
     // how to use matrix/translate and transform
@@ -55,8 +67,18 @@ window.onload = function(){
 
 };
 </script>
+<style>
+    #controlBox{list-style:none; text-align:left; padding:0; margin:0px;}
+    #controlBox li{float:left; text-align:left; padding:2px 10px}
+    #abs{border-right:1px dotted #666; }
+    #offset{}
+</style>
 </head>
 <body>
+    <ul id="controlBox">
+        <li id="abs">0,0</li>
+        <li id="offset">0,0</li>
+    </ul>
     <svg id="testCanvas"></svg>
 </body>
 </html>

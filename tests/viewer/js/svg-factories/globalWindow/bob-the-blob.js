@@ -1,12 +1,10 @@
 // s is the drawing context
 // Snap is our actual svg lib
 var bob_the_blob = function(s, Snap){
-    console.log('poop? ', Snap);
     return function(params){
         //var curPos = {x:null, y:null};
         var _positionMatrix = null;
 
-        console.log('snap here? ',Snap);
         // mask our params to handle possible undefined
         var _params = ((params)? params:{});
         
@@ -25,16 +23,27 @@ var bob_the_blob = function(s, Snap){
         };
 
         _obj.actions.rotate = function(angle){
-            angle = 45;
+            angle = 22;
             var rotateMatrix = new Snap.Matrix();
             rotateMatrix.add(_positionMatrix);
+            /*
             var cpos = {
                 x:_positionMatrix.x(0,0),
                 y:_positionMatrix.y(0,0)
             };
-            console.log('CUR POS', cpos);
+            */
+            var cpos = {
+                x:242,
+                y:183
+            };
+
+            //console.log('CUR POS', cpos);
             rotateMatrix.rotate(angle, cpos.x,cpos.y);
-            _obj.transform(rotateMatrix);
+            //_obj.transform(rotateMatrix);
+            //_obj.animate({'transform':rotateMatrix}, 1000, mina.easeinout);
+            _obj.animate({'transform':"t242,20r22"}, 1000, mina.easeinout);
+
+
         };
         _obj.actions.position = function(x,y){
             console.log('-- ',s);
